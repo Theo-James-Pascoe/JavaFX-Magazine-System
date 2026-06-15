@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="personal.assignment2.EditScreenController">
+
+  <!-- non‑visual ToggleGroup -->
+  <fx:define>
+    <ToggleGroup fx:id="modeToggleGroup"/>
+  </fx:define>
+
+  <!-- Top mode buttons -->
+  <top>
+    <HBox spacing="10">
+      <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+      </padding>
+      <ToggleButton text="View" toggleGroup="$modeToggleGroup" onAction="#onView" prefWidth="80"/>
+      <ToggleButton text="Create" toggleGroup="$modeToggleGroup" onAction="#onCreate" prefWidth="80"/>
+      <ToggleButton text="Edit" toggleGroup="$modeToggleGroup" selected="true" prefWidth="80"/>
+    </HBox>
+  </top>
+
+  <!-- Left lists with add/delete buttons -->
+  <left>
+    <VBox spacing="15">
+      <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+      </padding>
+      <VBox spacing="5">
+        <Label text="Supplements" style="-fx-font-weight: bold;"/>
+        <ListView fx:id="_supplementListView" prefWidth="180" prefHeight="150"/>
+        <HBox spacing="5">
+          <Button text="Add" onAction="#onAddSupplement"/>
+          <Button text="Delete" onAction="#onDeleteSupplement"/>
+        </HBox>
+      </VBox>
+      <VBox spacing="5">
+        <Label text="Customers" style="-fx-font-weight: bold;"/>
+        <ListView fx:id="_customerListView" prefWidth="180" prefHeight="150"/>
+        <HBox spacing="5">
+          <Button text="Add" onAction="#onAddCustomer"/>
+          <Button text="Delete" onAction="#onDeleteCustomer"/>
+        </HBox>
+      </VBox>
+    </VBox>
+  </left>
+
+  <!-- Center edit form in tabs -->
+  <center>
+    <TabPane fx:id="_editTabPane" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab fx:id="_supplementTab" text="Supplement">
+          <AnchorPane>
+            <children>
+              <GridPane hgap="10" vgap="10">
+                <padding>
+                  <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                
+                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="_supplementNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <Label text="Weekly Cost:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="_supplementCostField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                
+                <Button text="Save" onAction="#onSaveSupplement" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+              </GridPane>
+            </children>
+          </AnchorPane>
+        </Tab>
+
+        <Tab fx:id="_customerTab" text="Customer">
+          <AnchorPane>
+            <children>
+              <GridPane hgap="10" vgap="10">
+                <padding>
+                  <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                
+                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="_customerNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <Label text="Street Number:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="_customerStreetNumberField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                
+                <Label text="Street Name:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="_customerStreetNameField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                
+                <Label text="Suburb:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="_customerSuburbField"    GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                
+                <Label text="Postcode:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="_customerPostcodeField"  GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                
+                <Label text="Email:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="_customerEmailField" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                
+                <Label text="Payment Method:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <ChoiceBox fx:id="_customerPaymentMethodChoiceBox" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                
+                <Label text="Type:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+                <ChoiceBox fx:id="_customerTypeChoice" GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+                
+                <Label text="Associate Of:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="_coveringCustomerCombo" GridPane.rowIndex="8" GridPane.columnIndex="1"/>
+                
+                <Button text="Save" onAction="#onSaveCustomer" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+              </GridPane>
+            </children>
+          </AnchorPane>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </center>
+
+</BorderPane>

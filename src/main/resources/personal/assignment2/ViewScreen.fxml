@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="personal.assignment2.ViewScreenController">
+
+  <!-- non‑visual definitions -->
+  <fx:define>
+    <ToggleGroup fx:id="modeToggleGroup"/>
+  </fx:define>
+
+  <!-- Top buttons -->
+  <top>
+    <HBox spacing="10">
+      <!-- padding via Insets element -->
+      <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+      </padding>
+      <ToggleButton text="View" toggleGroup="$modeToggleGroup" selected="true" prefWidth="80"/>
+      <ToggleButton text="Create" toggleGroup="$modeToggleGroup" onAction="#onCreate" prefWidth="80"/>
+      <ToggleButton text="Edit" toggleGroup="$modeToggleGroup" onAction="#onEdit" prefWidth="80"/>
+    </HBox>
+  </top>
+
+  <!-- Left lists -->
+  <left>
+    <VBox spacing="15">
+      <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+      </padding>
+      <VBox spacing="5">
+        <Label text="List of Supplements" style="-fx-font-weight: bold;"/>
+        <ListView fx:id="supplementListView" prefWidth="180" prefHeight="200"/>
+      </VBox>
+      <VBox spacing="5">
+        <Label text="List of Customers" style="-fx-font-weight: bold;"/>
+        <ListView fx:id="customerListView" prefWidth="180" prefHeight="200"/>
+      </VBox>
+    </VBox>
+  </left>
+
+  <!-- Information panel -->
+  <center>
+    <VBox spacing="10">
+      <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+      </padding>
+      <Label text="Information Panel" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+      <ScrollPane fitToWidth="true" fitToHeight="true" prefWidth="300" prefHeight="400">
+        <VBox fx:id="infoPanel" spacing="8">
+          <padding>
+            <Insets top="8" right="8" bottom="8" left="8"/>
+          </padding>
+        </VBox>
+      </ScrollPane>
+    </VBox>
+  </center>
+
+</BorderPane>

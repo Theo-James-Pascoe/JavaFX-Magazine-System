@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import personal.assignment2.model.Supplement?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="personal.assignment2.CreateScreenController">
+
+  <!-- Non‑visual ToggleGroup for navigation -->
+  <fx:define>
+    <ToggleGroup fx:id="_modeToggleGroup"/>
+  </fx:define>
+
+  <!-- Top nav buttons -->
+  <top>
+    <HBox spacing="10">
+      <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+      <ToggleButton text="View" toggleGroup="$modeToggleGroup" onAction="#onView" prefWidth="80"/>
+      <ToggleButton text="Create" toggleGroup="$modeToggleGroup" selected="true" prefWidth="80"/>
+      <ToggleButton text="Edit" toggleGroup="$modeToggleGroup" onAction="#onEdit" prefWidth="80"/>
+    </HBox>
+  </top>
+
+  <!-- Center the wizard tabs -->
+  <center>
+    <TabPane fx:id="_createTabPane" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+
+        <!-- Magazine info -->
+        <Tab text="Magazine">
+          <AnchorPane>
+            <children>
+              <GridPane hgap="10" vgap="10">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                
+                <Label text="Weekly Cost:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="_magazineWeeklyCostField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <Button text="Save Magazine" onAction="#onSaveMagazine" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+              </GridPane>
+            </children>
+          </AnchorPane>
+        </Tab>
+
+        <!-- Supplements -->
+        <Tab text="Supplements" fx:id="_supplementsTab">
+          <AnchorPane>
+            <children>
+              <VBox spacing="8">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+                <ListView fx:id="_supplementListView" prefHeight="150"/>
+                
+                <Button text="Add Supplement" onAction="#onAddSupplement"/>
+
+                <GridPane hgap="10" vgap="10">
+                  <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                  <TextField fx:id="_supplementNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                  <Label text="Weekly Cost:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                  <TextField fx:id="_supplementCostField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                </GridPane>
+              </VBox>
+            </children>
+          </AnchorPane>
+        </Tab>
+
+        <!-- Customers -->
+        <Tab text="Customers" fx:id="_customersTab">
+          <AnchorPane>
+            <children>
+              <VBox spacing="8">
+                <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+                <ListView fx:id="_customerListView" prefHeight="150"/>
+                <Button text="Add Customer" onAction="#onAddCustomer"/>
+
+                <!-- Three-column form -->
+                <HBox spacing="20">
+                  <!-- Left Column -->
+                  <VBox spacing="10">
+                    <Label text="Name:"/>
+                    <TextField fx:id="_customerNameField"/>
+
+                    <Label text="Email:"/>
+                    <TextField fx:id="_customerEmailField"/>
+
+                    <Label text="Type:"/>
+                    <ChoiceBox fx:id="_customerTypeChoiceBox"/>
+
+                    <Label text="Payment Method:"/>
+                    <ChoiceBox fx:id="_customerPaymentMethodChoiceBox"/>
+
+                    <Label text="Associate Of:"/>
+                    <ComboBox fx:id="_coveringCustomerCombo"/>
+                  </VBox>
+
+                  <!-- Middle Column (Address Info) -->
+                  <VBox spacing="10">
+                    <Label text="Street Number:"/>
+                    <TextField fx:id="_customerStreetNumberField"/>
+
+                    <Label text="Street Name:"/>
+                    <TextField fx:id="_customerStreetNameField"/>
+
+                    <Label text="Suburb:"/>
+                    <TextField fx:id="_customerSuburbField"/>
+
+                    <Label text="Postcode:"/>
+                    <TextField fx:id="_customerPostcodeField"/>
+                  </VBox>
+                  
+                  <!-- Right column for supplement handling-->
+                  <VBox spacing="10">
+                    <Label text="Available Supplements:"/>
+                    <ComboBox fx:id="_customerAvailableSupplementsCombo" prefWidth="150"/>
+                    <Button text="Add" onAction="#onAddCustSupp" fx:id="_customerAddSupplementButton"/>
+                    
+                    <Label text="Subscribed Supplements:"/>
+                    <ListView fx:id="_customerSupplementListView" prefHeight="100" prefWidth="150"/>
+                    <Button text="Remove" onAction="#onRemoveCustSupp" fx:id="_customerRemoveSupplementButton"/>
+                  </VBox>
+                  
+                </HBox>
+              </VBox>
+            </children>
+          </AnchorPane>
+        </Tab>
+
+      </tabs>
+    </TabPane>
+  </center>
+
+</BorderPane>

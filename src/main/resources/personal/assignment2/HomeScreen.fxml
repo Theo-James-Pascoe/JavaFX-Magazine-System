@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="20" alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="personal.assignment2.HomeScreenController">
+  <Button text="Create New Magazine" onAction="#onCreate"/>
+  <Button text="Edit Existing Magazine" onAction="#onEdit"/>
+  <Button text="View Magazine" onAction="#onView"/>
+  <Button text="Load Default Magazine" onAction="#onLoadDefault"/>
+</VBox>
